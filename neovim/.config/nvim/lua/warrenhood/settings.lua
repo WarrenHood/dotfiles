@@ -16,4 +16,5 @@ o.clipboard = 'unnamedplus'
 o.ignorecase = true
 o.smartcase = true
 
-
+-- Enable mouse
+o.mouse = 'a'
