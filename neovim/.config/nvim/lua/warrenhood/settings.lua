@@ -18,3 +18,6 @@ o.smartcase = true
 
 -- Enable mouse
 o.mouse = 'a'
+
+-- Use space for leader key
+g.mapleader = " "
