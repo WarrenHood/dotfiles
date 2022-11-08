@@ -6,9 +6,6 @@ cmp.setup({
 		-- REQUIRED - you must specify a snippet engine
 		expand = function(args)
 			vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-			-- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-			-- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-			-- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
 		end,
 		vim.lsp.buf.format,
 	},
@@ -24,6 +21,8 @@ cmp.setup({
 		["<C-Space>"] = cmp.mapping.complete(),
 		["<C-e>"] = cmp.mapping.abort(),
 		["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+		["<Tab>"] = cmp.mapping(function() if cmp.visible() then cmp.select_next_item() end end),
+		["<S-Tab>"] = cmp.mapping(function() if cmp.visible() then cmp.select_prev_item() end end),
 	}),
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },

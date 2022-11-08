@@ -1,6 +1,7 @@
 require("warrenhood.settings")
 require("warrenhood.keybinds")
 require("warrenhood.plugins")
+require("warrenhood.plugins-config")
 require("warrenhood.mason-config")
 require("warrenhood.cmp-config")
 require("warrenhood.theme")

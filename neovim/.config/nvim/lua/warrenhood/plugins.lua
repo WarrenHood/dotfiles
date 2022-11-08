@@ -49,8 +49,19 @@ require("packer").startup(function()
 		requires = { { 'nvim-lua/plenary.nvim' } }
 	}
 
+	-- nvim-tree (File Explorer)
+	use {
+  'nvim-tree/nvim-tree.lua',
+  requires = {
+    'nvim-tree/nvim-web-devicons', -- file icons
+  },
+  tag = 'nightly'
+}
+
 	-- Automatically set up configuration after cloning packer.nvim
 	if packer_bootstrap then
 		require("packer").sync()
 	end
 end)
+
+
