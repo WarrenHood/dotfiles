@@ -17,11 +17,17 @@ local packer_bootstrap = ensure_packer()
 local use = require("packer").use
 
 require("packer").startup(function()
-	use("wbthomason/packer.nvim") -- Package manager
+	-- Packer package manager
+	use("wbthomason/packer.nvim")
+	
+	-- OneDark color scheme
+	use("navarasu/onedark.nvim")
+
+	-- LSP Stuff
 	use({
-		"williamboman/mason.nvim", -- LSP Server manager etc
+		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
-		"neovim/nvim-lspconfig", -- Configurations for Nvim LSP
+		"neovim/nvim-lspconfig",
 	})
 
 	-- Autocomplete

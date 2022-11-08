@@ -19,5 +19,8 @@ o.smartcase = true
 -- Enable mouse
 o.mouse = 'a'
 
+-- Enable termguicolors
+o.termguicolors = true
+
 -- Use space for leader key
 g.mapleader = " "
