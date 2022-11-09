@@ -18,3 +18,13 @@ o.smartcase = true
 
 -- Enable mouse
 o.mouse = 'a'
+
+-- Enable termguicolors
+o.termguicolors = true
+
+-- Use space for leader key
+g.mapleader = " "
+
+-- Disable netrw
+g.loaded_netrw = 1
+g.loaded_netrwPlugin = 1
