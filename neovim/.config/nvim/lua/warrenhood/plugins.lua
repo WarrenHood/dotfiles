@@ -1,13 +1,13 @@
 -- Ensure packer in installed
 local ensure_packer = function()
-	local fn = vim.fn
-	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-	if fn.empty(fn.glob(install_path)) > 0 then
-		fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
-		vim.cmd([[packadd packer.nvim]])
-		return true
-	end
-	return false
+    local fn = vim.fn
+    local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+    if fn.empty(fn.glob(install_path)) > 0 then
+        fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+        vim.cmd([[packadd packer.nvim]])
+        return true
+    end
+    return false
 end
 
 local packer_bootstrap = ensure_packer()
@@ -17,51 +17,63 @@ local packer_bootstrap = ensure_packer()
 local use = require("packer").use
 
 require("packer").startup(function()
-	-- Packer package manager
-	use("wbthomason/packer.nvim")
-	
-	-- OneDark color scheme
-	use("navarasu/onedark.nvim")
+    -- Packer package manager
+    use("wbthomason/packer.nvim")
 
-	-- LSP Stuff
-	use({
-		"williamboman/mason.nvim",
-		"williamboman/mason-lspconfig.nvim",
-		"neovim/nvim-lspconfig",
-	})
+    -- OneDark color scheme
+    use("navarasu/onedark.nvim")
 
-	-- Autocomplete
-	use("hrsh7th/cmp-nvim-lsp")
-	use("hrsh7th/cmp-buffer")
-	use("hrsh7th/cmp-path")
-	use("hrsh7th/cmp-cmdline")
-	use("hrsh7th/nvim-cmp")
-	use("hrsh7th/cmp-vsnip")
-	use("hrsh7th/vim-vsnip")
+    -- LSP Stuff
+    use({
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
+        "neovim/nvim-lspconfig",
+    })
 
-	-- Treesitter
-	use("nvim-treesitter/nvim-treesitter")
+    -- Autocomplete
+    use("hrsh7th/cmp-nvim-lsp")
+    use("hrsh7th/cmp-buffer")
+    use("hrsh7th/cmp-path")
+    use("hrsh7th/cmp-cmdline")
+    use("hrsh7th/nvim-cmp")
+    use("hrsh7th/cmp-vsnip")
+    use("hrsh7th/vim-vsnip")
+
+    -- Treesitter
+    use("nvim-treesitter/nvim-treesitter")
 
 
-	-- Telescope
-	use {
-		'nvim-telescope/telescope.nvim', tag = '0.1.0',
-		requires = { { 'nvim-lua/plenary.nvim' } }
-	}
+    -- Telescope
+    use {
+        'nvim-telescope/telescope.nvim', tag = '0.1.0',
+        requires = { { 'nvim-lua/plenary.nvim' } }
+    }
 
-	-- nvim-tree (File Explorer)
-	use {
-  'nvim-tree/nvim-tree.lua',
-  requires = {
-    'nvim-tree/nvim-web-devicons', -- file icons
-  },
-  tag = 'nightly'
-}
+    -- nvim-tree (File Explorer)
+    use {
+        'nvim-tree/nvim-tree.lua',
+        requires = {
+            'nvim-tree/nvim-web-devicons', -- file icons
+        },
+        tag = 'nightly'
 
-	-- Automatically set up configuration after cloning packer.nvim
-	if packer_bootstrap then
-		require("packer").sync()
-	end
+    }
+
+    -- ToggleTerm
+    use { "akinsho/toggleterm.nvim", tag = '*', config = function()
+        require("toggleterm").setup()
+    end }
+
+    -- Which key for command suggestions
+    use {
+        "folke/which-key.nvim",
+        config = function()
+            require("which-key").setup()
+        end
+    }
+
+    -- Automatically set up configuration after cloning packer.nvim
+    if packer_bootstrap then
+        require("packer").sync()
+    end
 end)
-
-
