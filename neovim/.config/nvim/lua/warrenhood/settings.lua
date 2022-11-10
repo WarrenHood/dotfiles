@@ -4,10 +4,14 @@ local g = vim.g
 -- General stuff
 o.number = true
 o.relativenumber = true
+o.autoindent = true
 
-o.tabstop = 2 
-o.shiftwidth = 0
-o.softtabstop = -1
+o.tabstop = 4
+o.shiftwidth = 4
+o.softtabstop = 4
+o.smartindent = true
+
+o.expandtab = true
 
 -- Make clipboard work with neovim
 o.clipboard = 'unnamedplus'
