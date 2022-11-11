@@ -39,3 +39,7 @@ map('t', '<C-h>', '<C-\\><C-n>:wincmd h<CR>')
 map('t', '<C-j>', '<C-\\><C-n>:wincmd j<CR>')
 map('t', '<C-k>', '<C-\\><C-n>:wincmd k<CR>')
 map('t', '<C-l>', '<C-\\><C-n>:wincmd l<CR>')
+
+-- Pane management
+map('n', '<leader>sv', ':vsplit<CR>', { desc = 'Split Vertical' })
+map('n', '<leader>sh', ':split<CR>', { desc = 'Split Horizontal' })
