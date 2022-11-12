@@ -24,8 +24,3 @@ nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
 add_to_file "alias nv='nvim'" "$HOME/.zshrc"
 
-# add_to_file "nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'" "$HOME/.zshrc"
-
-#if grep -Fxq "nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'"
-#then   
-#end
