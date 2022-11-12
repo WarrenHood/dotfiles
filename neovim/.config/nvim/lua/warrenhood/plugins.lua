@@ -72,6 +72,14 @@ require("packer").startup(function()
         end
     }
 
+    -- Comments
+    use {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end
+    }
+
     -- Automatically set up configuration after cloning packer.nvim
     if packer_bootstrap then
         require("packer").sync()
