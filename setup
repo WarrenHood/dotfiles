@@ -1,0 +1,31 @@
+#!/bin/bash
+
+echo "Setting up the stuff..."
+
+echo "Updating arch"
+sudo pacman -Syyu
+sudo pacman -S ripgrep fd neovim make stow tmux
+
+
+# tmux plugin manager and theme
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+add_to_file() {
+    if grep -Fxq "$1" $2
+    then
+        echo "Found existing line '$1' in file '$2'"
+    else
+        echo "Adding line \"$1\" to file \"$2\""
+        echo "$1" >> $2
+    fi
+}
+
+nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+
+add_to_file "alias nv='nvim'" "$HOME/.zshrc"
+
+# add_to_file "nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'" "$HOME/.zshrc"
+
+#if grep -Fxq "nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'"
+#then   
+#end
