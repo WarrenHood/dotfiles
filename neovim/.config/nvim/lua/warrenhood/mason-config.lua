@@ -11,7 +11,12 @@ local lspconfig = require('lspconfig')
 require("mason-lspconfig").setup_handlers({
 	-- default handler
 	function(server_name) -- default handler (optional)
-		require("lspconfig")[server_name].setup {}
+		require("lspconfig")[server_name].setup {
+            on_attach = function()
+                vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
+                vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0, desc = "Go to definition"})
+            end
+        }
 	end,
 	-- Overrides
 	["sumneko_lua"] = function()
