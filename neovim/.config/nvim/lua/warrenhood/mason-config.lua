@@ -15,6 +15,12 @@ require("mason-lspconfig").setup_handlers({
             on_attach = function()
                 vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
                 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0, desc = "Go to definition"})
+                vim.keymap.set("n", "gr", ":Telescope lsp_references<CR>", { buffer = 0, desc = "Go to references"})
+                vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, { buffer = 0, desc = "Go to type definition"})
+                vim.keymap.set("n", "gI", vim.lsp.buf.implementation, { buffer = 0, desc = "Go to implementation"})
+                vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { buffer = 0, desc = "Refactor/Rename" })
+                vim.keymap.set("n", "<leader>df", vim.diagnostic.goto_next, { buffer = 0, desc = "Go to next diagnostic"})
+                vim.keymap.set("n", "<leader>db", vim.diagnostic.goto_prev, { buffer = 0, desc = "Go to previous diagnostic"})
             end
         }
 	end,

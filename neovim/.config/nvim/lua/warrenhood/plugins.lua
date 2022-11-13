@@ -80,6 +80,25 @@ require("packer").startup(function()
         end
     }
 
+    -- Git signs
+    use {
+        'lewis6991/gitsigns.nvim',
+        config = function()
+            require('gitsigns').setup()
+        end
+    }
+
+    -- Show indent guides
+    use {
+        'lukas-reineke/indent-blankline.nvim',
+        config = function()
+            require("indent_blankline").setup {
+                show_current_context = true,
+                show_current_context_start = true,
+            }
+        end
+    }
+
     -- Automatically set up configuration after cloning packer.nvim
     if packer_bootstrap then
         require("packer").sync()
