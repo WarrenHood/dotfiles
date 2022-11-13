@@ -34,5 +34,5 @@ g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
 
 -- Timeout length (Time in milliseconds to wait for a mapped sequence to complete.)
-o.timeoutlen = 0
+o.timeoutlen = 500
 
