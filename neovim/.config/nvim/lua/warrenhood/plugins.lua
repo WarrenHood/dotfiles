@@ -36,8 +36,8 @@ require("packer").startup(function()
     use("hrsh7th/cmp-path")
     use("hrsh7th/cmp-cmdline")
     use("hrsh7th/nvim-cmp")
-    use("hrsh7th/cmp-vsnip")
-    use("hrsh7th/vim-vsnip")
+    use("saadparwaiz1/cmp_luasnip")
+    use("L3MON4D3/LuaSnip")
 
     -- Treesitter
     use("nvim-treesitter/nvim-treesitter")

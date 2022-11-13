@@ -29,7 +29,7 @@ map('n', '<C-B>', ':NvimTreeToggle<CR>')
 map('n', '<S-t>', ':ToggleTerm<CR>')
 map('t', '<S-t>', '<C-\\><C-n>:ToggleTerm<CR>')
 
--- Pane navigation
+--[[ -- Pane navigation
 map('n', '<C-h>', ':wincmd h<CR>')
 map('n', '<C-j>', ':wincmd j<CR>')
 map('n', '<C-k>', ':wincmd k<CR>')
@@ -38,8 +38,20 @@ map('n', '<C-l>', ':wincmd l<CR>')
 map('t', '<C-h>', '<C-\\><C-n>:wincmd h<CR>')
 map('t', '<C-j>', '<C-\\><C-n>:wincmd j<CR>')
 map('t', '<C-k>', '<C-\\><C-n>:wincmd k<CR>')
-map('t', '<C-l>', '<C-\\><C-n>:wincmd l<CR>')
+map('t', '<C-l>', '<C-\\><C-n>:wincmd l<CR>') ]]
 
 -- Pane management
 map('n', '<leader>sv', ':vsplit<CR>', { desc = 'Split Vertical' })
 map('n', '<leader>sh', ':split<CR>', { desc = 'Split Horizontal' })
+
+
+-- luasnip
+vim.cmd[[
+" Use Tab to expand and jump through snippets
+imap <silent><expr> <C-k> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>' 
+smap <silent><expr> <C-k> luasnip#jumpable(1) ? '<Plug>luasnip-jump-next' : '<Tab>'
+
+" Use Shift-Tab to jump backwards through snippets
+imap <silent><expr> <C-j> luasnip#jumpable(-1) ? '<Plug>luasnip-jump-prev' : '<S-Tab>'
+smap <silent><expr> <C-j> luasnip#jumpable(-1) ? '<Plug>luasnip-jump-prev' : '<S-Tab>'
+]]
