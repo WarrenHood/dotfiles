@@ -66,9 +66,6 @@ require("packer").startup(function()
     -- Which key for command suggestions
     use {
         "folke/which-key.nvim",
-        config = function()
-            require("which-key").setup()
-        end
     }
 
     -- Comments
@@ -102,12 +99,52 @@ require("packer").startup(function()
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-        config = function ()
+        config = function()
             require("lualine").setup {
 
             }
         end
     }
+
+    -- Test runner Stuff
+    use {
+        "nvim-neotest/neotest",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-neotest/neotest-python",
+        },
+        config = function()
+            require('neotest').setup {
+                adapters = {
+                    require("neotest-python")({
+                        dap = { justMyCode = false },
+                    }),
+                },
+            }
+        end
+
+    }
+
+    -- Debugging
+    use('mfussenegger/nvim-dap') -- Main debugging plugin
+    use {
+        'rcarriga/nvim-dap-ui',
+        requires = { "mfussenegger/nvim-dap" },
+        config = function()
+            require('dapui').setup()
+        end
+    } -- Better debugging UI
+
+    use {
+        'theHamsta/nvim-dap-virtual-text',
+        config = function()
+            require("nvim-dap-virtual-text").setup()
+        end
+    } -- Virtual text for nvim-dap
+
+
+
 
     -- Automatically set up configuration after cloning packer.nvim
     if packer_bootstrap then
