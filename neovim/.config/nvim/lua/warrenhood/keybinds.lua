@@ -91,3 +91,11 @@ smap <silent><expr> <C-k> luasnip#jumpable(1) ? '<Plug>luasnip-jump-next' : '<Ta
 imap <silent><expr> <C-j> luasnip#jumpable(-1) ? '<Plug>luasnip-jump-prev' : '<S-Tab>'
 smap <silent><expr> <C-j> luasnip#jumpable(-1) ? '<Plug>luasnip-jump-prev' : '<S-Tab>'
 ]]
+
+-- GUI (Neovide
+-- Toggle fullscreen in Neovide with Alt + Enter)
+if vim.g.neovide then
+    map({"n", "i", "t"}, "<A-CR>", function ()
+        vim.g.neovide_fullscreen = not vim.g.neovide_fullscreen
+    end)
+end
