@@ -36,3 +36,8 @@ g.loaded_netrwPlugin = 1
 -- Timeout length (Time in milliseconds to wait for a mapped sequence to complete.)
 o.timeoutlen = 500
 
+-- Gui font (Neovide)
+if vim.g.neovide then
+    vim.o.guifont = "Mononoki NF"
+    vim.g.neovide_transparency = 0.85
+end
