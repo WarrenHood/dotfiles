@@ -39,5 +39,5 @@ o.timeoutlen = 500
 -- Gui font (Neovide)
 if vim.g.neovide then
     vim.o.guifont = "Mononoki NF"
-    vim.g.neovide_transparency = 0.85
+    vim.g.neovide_transparency = 0.95
 end
