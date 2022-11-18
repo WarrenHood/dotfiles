@@ -146,7 +146,11 @@ require("packer").startup(function()
         end
     } -- Virtual text for nvim-dap
 
-
+    -- Tab
+    use {
+        'romgrk/barbar.nvim',
+        requires = {'kyazdani42/nvim-web-devicons'},
+    }
 
 
     -- Automatically set up configuration after cloning packer.nvim
