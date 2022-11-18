@@ -126,6 +126,9 @@ require("packer").startup(function()
 
     }
 
+    -- Log file syntax highlighting
+    use('mtdl9/vim-log-highlighting')
+
     -- Debugging
     use('mfussenegger/nvim-dap') -- Main debugging plugin
     use {
