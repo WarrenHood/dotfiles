@@ -2,12 +2,22 @@
 
 echo "Setting up the stuff..."
 
-echo "Updating arch"
-sudo pacman -Syyu
-sudo pacman -S ripgrep fd neovim make stow tmux
+if [[ "$(uname -a)" == *"Ubuntu"*  ]]
+then
+    echo "Updating Ubuntu"
+    sudo apt update && sudo apt upgrade
+    echo "Installing tools/utils"
+    sudo apt install ripgrep fd-find make stow tmux    
+else
+    echo "Updating Arch"
+    sudo pacman -Syyu
+    echo "Installing tools/utils"
+    sudo pacman -S ripgrep fd neovim make stow tmux
+fi
 
 
 # tmux plugin manager and theme
+echo "Installing tmux plugin manager... Don't forget to press <C-a><S-i> in a new tmux session later"
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 add_to_file() {
@@ -22,5 +32,6 @@ add_to_file() {
 
 nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
+# Add aliases to zshrc
 add_to_file "alias nv='nvim'" "$HOME/.zshrc"
 
