@@ -149,7 +149,19 @@ require("packer").startup(function()
     -- Tab
     use {
         'romgrk/barbar.nvim',
-        requires = {'kyazdani42/nvim-web-devicons'},
+        requires = { 'kyazdani42/nvim-web-devicons' },
+    }
+
+    use {
+        "nvim-neorg/neorg",
+        run = ":Neorg sync-parsers", -- This is the important bit!
+        config = function()
+            require("neorg").setup {
+                load = {
+                    ["core.defaults"] = {}
+                }
+            }
+        end,
     }
 
 
