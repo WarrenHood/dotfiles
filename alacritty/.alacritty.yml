@@ -417,13 +417,19 @@ font:
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
 
+# Open tmux in alacritty and attach to old session if it exists
+# shell:
+#   program: /bin/zsh
+#   args:
+#     - -l
+#     - -c
+#     - "tmux attach || tmux"
+
+# Let's just open a normal shell when in awesome-wm
 shell:
   program: /bin/zsh
   args:
     - -l
-    - -c
-    - "tmux attach || tmux"
-
 # Startup directory
 #
 # Directory the shell is started in. If this is unset, or `None`, the working

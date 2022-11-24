@@ -7,7 +7,7 @@ then
     echo "Updating Ubuntu"
     sudo apt update && sudo apt upgrade
     echo "Installing tools/utils"
-    sudo apt install ripgrep fd-find make stow tmux    
+    sudo apt install ripgrep fd-find make stow tmux awesome compton dmenu nitrogen   
 else
     echo "Updating Arch"
     sudo pacman -Syyu
