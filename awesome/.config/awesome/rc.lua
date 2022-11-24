@@ -602,4 +602,5 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 --
 
 -- compositor
-awful.spawn("compton")
+awful.util.spawn("compton")
+awful.util.spawn("nm-applet")
