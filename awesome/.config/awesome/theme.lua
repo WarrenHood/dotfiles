@@ -13,7 +13,7 @@ local theme = {}
 
 theme.font          = "Mononoki Nerd Font 8"
 theme.bg_normal     = "#222222"
-theme.bg_focus      = "#55CC55"
+theme.bg_focus      = "#55bb55"
 theme.bg_urgent     = "#cc0088"
 theme.bg_minimize   = "#444444"
 theme.bg_systray    = theme.bg_normal
@@ -26,7 +26,7 @@ theme.fg_minimize   = "#ffffff"
 theme.useless_gap   = dpi(6)
 theme.border_width  = dpi(2)
 theme.border_normal = "#333333"
-theme.border_focus  = "#55CC55"
+theme.border_focus  = "#55bb55"
 theme.border_marked = "#900090"
 
 -- There are other variable sets

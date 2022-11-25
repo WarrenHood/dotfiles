@@ -576,3 +576,7 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
+-- Stuff to start
+awful.spawn.once("picom") -- Compositor
+awful.spawn.once("nm-applet") -- Network Manager applet
+awful.spawn.once("volumeicon") -- Volume icon
