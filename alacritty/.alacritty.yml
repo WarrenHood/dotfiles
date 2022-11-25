@@ -417,13 +417,19 @@ font:
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
 
+# Non-tiling WM setup
+# shell:
+#   program: /bin/zsh
+#   args:
+#     - -l
+#     - -c
+#     - "tmux attach || tmux"
+
+# Tiling WM setup - don't need tmux
 shell:
   program: /bin/zsh
   args:
     - -l
-    - -c
-    - "tmux attach || tmux"
-
 # Startup directory
 #
 # Directory the shell is started in. If this is unset, or `None`, the working
