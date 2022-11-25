@@ -581,4 +581,7 @@ awful.spawn.once("lxpolkit") -- Polkit
 awful.spawn.once("picom") -- Compositor
 awful.spawn.once("nm-applet") -- Network Manager applet
 awful.spawn.once("volumeicon") -- Volume icon
-awful.spawn.once("nitrogen --restore") -- Restore last set wallpaper
+
+-- Wallpaper
+-- awful.spawn.once("xargs xwallpaper --output all --stretch --center ~/.config/awesome/wallpapers/miku_1.png")
+-- awful.spawn.once("nitrogen --restore") -- Restore last set wallpaper
