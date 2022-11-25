@@ -164,6 +164,13 @@ require("packer").startup(function()
         end,
     }
 
+    -- See hex colors
+    use {
+        "norcalli/nvim-colorizer.lua",
+        config = function ()
+            require'colorizer'.setup()
+        end
+    }
 
     -- Automatically set up configuration after cloning packer.nvim
     if packer_bootstrap then
