@@ -12,7 +12,7 @@ else
     echo "Updating Arch"
     sudo pacman -Syyu
     echo "Installing tools/utils"
-    sudo pacman -S ripgrep fd neovim make stow tmux
+    sudo pacman -S ripgrep fd neovim make stow tmux awesome dmenu arandr
 fi
 
 
