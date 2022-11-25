@@ -7,7 +7,10 @@ then
     echo "Updating Ubuntu"
     sudo apt update && sudo apt upgrade
     echo "Installing tools/utils"
-    sudo apt install ripgrep fd-find make stow tmux awesome compton dmenu nitrogen   
+    sudo apt install ripgrep fd-find make stow tmux awesome compton dmenu nitrogen acpi acpid qt5ct
+
+    echo "Enabling acpid"
+    systemctl enable acpid
 else
     echo "Updating Arch"
     sudo pacman -Syyu
