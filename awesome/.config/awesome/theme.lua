@@ -23,13 +23,13 @@ theme.font          = "Mononoki Nerd Font 8"
 theme.bg_normal     = "#222222"
 theme.bg_focus      = "#222222"
 theme.bg_urgent     = "#cc0088"
-theme.bg_minimize   = "#444444"
+theme.bg_minimize   = "#222222"
 theme.bg_systray    = "#7777DD"
 
 theme.fg_normal     = "#FFFFFF"
-theme.fg_focus      = "#FFFFFF"
+theme.fg_focus      = "#77DD77"
 theme.fg_urgent     = "#FFFFFF"
-theme.fg_minimize   = "#FFFFFF"
+theme.fg_minimize   = "#AAAAAA"
 
 theme.useless_gap   = dpi(6)
 theme.border_width  = dpi(2)
