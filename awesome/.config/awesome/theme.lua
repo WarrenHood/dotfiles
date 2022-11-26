@@ -6,6 +6,14 @@ local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 
+local gears = require("gears")
+local lain  = require("lain")
+local awful = require("awful")
+local wibox = require("wibox")
+local separators = lain.util.separators
+local arrow = separators.arrow_left
+
+
 local gfs = require("gears.filesystem")
 local themes_path = gfs.get_themes_dir()
 
@@ -13,20 +21,20 @@ local theme = {}
 
 theme.font          = "Mononoki Nerd Font 8"
 theme.bg_normal     = "#222222"
-theme.bg_focus      = "#55bb55"
+theme.bg_focus      = "#222222"
 theme.bg_urgent     = "#cc0088"
 theme.bg_minimize   = "#444444"
-theme.bg_systray    = theme.bg_normal
+theme.bg_systray    = "#7777DD"
 
-theme.fg_normal     = "#aaaaaa"
-theme.fg_focus      = "#ffffff"
-theme.fg_urgent     = "#ffffff"
-theme.fg_minimize   = "#ffffff"
+theme.fg_normal     = "#FFFFFF"
+theme.fg_focus      = "#FFFFFF"
+theme.fg_urgent     = "#FFFFFF"
+theme.fg_minimize   = "#FFFFFF"
 
 theme.useless_gap   = dpi(6)
 theme.border_width  = dpi(2)
 theme.border_normal = "#333333"
-theme.border_focus  = "#55bb55"
+theme.border_focus  = "#77DD77"
 theme.border_marked = "#900090"
 
 -- There are other variable sets
