@@ -232,6 +232,7 @@ awful.screen.connect_for_each_screen(function(s)
 end)
 -- }}}
 
+
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
     awful.button({}, 3, function() mymainmenu:toggle() end),
@@ -588,7 +589,8 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 -- Stuff to start
-awful.spawn.once("lxpolkit") -- Polkit
+-- awful.spawn.once("lxpolkit") -- Polkit
+awful.spawn.once("lxsession") -- Let's run an lxsession which has a polkit
 awful.spawn.once("picom") -- Compositor
 awful.spawn.once("nm-applet") -- Network Manager applet
 awful.spawn.once("volumeicon") -- Volume icon
