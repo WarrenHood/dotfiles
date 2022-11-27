@@ -609,6 +609,7 @@ awful.spawn.once("lxsession") -- Let's run an lxsession which has a polkit
 awful.spawn.once("picom") -- Compositor
 awful.spawn.once("nm-applet") -- Network Manager applet
 awful.spawn.once("autorandr -l dual") -- Load my dual monitor autorandr config
+awful.spawn.once("volumeicon") -- Volume icon
 
 -- Wallpaper
 -- awful.spawn.once("xargs xwallpaper --output all --stretch --center ~/.config/awesome/wallpapers/miku_1.png")
