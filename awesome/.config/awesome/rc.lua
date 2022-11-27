@@ -258,6 +258,12 @@ root.buttons(gears.table.join(
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
+	-- Make multimedia keys work properly - mainly for spotify
+    awful.key({}, "XF86AudioPlay", function() awful.util.spawn("playerctl play-pause") end),
+    awful.key({}, "XF86AudioStop", function() awful.util.spawn("playerctl play-pause") end),
+    awful.key({}, "XF86AudioPrev", function() awful.util.spawn("playerctl previous") end),
+    awful.key({}, "XF86AudioNext", function() awful.util.spawn("playerctl next") end),
+
     awful.key({ modkey, }, "s", hotkeys_popup.show_help,
         { description = "show help", group = "awesome" }),
     awful.key({ modkey, }, "Left", awful.tag.viewprev,
