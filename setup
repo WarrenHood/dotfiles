@@ -12,7 +12,7 @@ else
     echo "Updating Arch"
     sudo pacman -Syyu
     echo "Installing tools/utils"
-    sudo pacman -S ripgrep fd neovim make stow tmux awesome dmenu arandr autorandr volumeicon picom nitrogen network-manager-applet lxsession thunar lxappearance-gtk3 power-profiles-daemon thermald
+    sudo pacman -S ripgrep fd neovim make stow tmux awesome dmenu arandr autorandr volumeicon picom nitrogen network-manager-applet lxsession thunar lxappearance-gtk3 power-profiles-daemon thermald acpi arc-icon-theme
 
     sudo systemctl enable --now power-profiles-daemon
     sudo thermald --systemd

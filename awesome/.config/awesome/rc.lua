@@ -168,6 +168,13 @@ local function set_wallpaper(s)
     end
 end
 
+
+
+-- WIDGETS
+
+local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
+local cpu = lain.widget.cpu()
+
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
@@ -218,9 +225,17 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         
         { -- Right widgets
+			-- Colors: #DDDD77 #77DDDD #DD77DD #7777DD #77DD77
         	layout = wibox.layout.fixed.horizontal,
-            arrow("alpha", "#DD77DD"),
-            wibox.container.background( mykeyboardlayout, "#DD77DD"),
+            arrow("alpha", "#DDDD77"),
+            wibox.container.background( mykeyboardlayout, "#DDDD77"),
+            arrow("#DDDD77", "#77DDDD"),
+            wibox.container.background( nil , "#77DDDD"),
+            arrow("#77DDDD", "#DD77DD"),
+            wibox.container.background( battery_widget({
+                show_current_level = true,
+                margin_right = 2,
+            }), "#DD77DD"),
             arrow("#DD77DD", "#7777DD"),
             wibox.container.background( wibox.widget.systray(), "#7777DD"),
             arrow("#7777DD", "#77DD77"),
@@ -593,7 +608,6 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 awful.spawn.once("lxsession") -- Let's run an lxsession which has a polkit
 awful.spawn.once("picom") -- Compositor
 awful.spawn.once("nm-applet") -- Network Manager applet
-awful.spawn.once("volumeicon") -- Volume icon
 awful.spawn.once("autorandr -l dual") -- Load my dual monitor autorandr config
 
 -- Wallpaper
