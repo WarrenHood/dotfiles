@@ -144,3 +144,11 @@ map('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>', barbar_opts)
 -- Other:
 -- :BarbarEnable - enables barbar (enabled by default)
 -- :BarbarDisable - very bad command, should never be used
+
+
+-- Disable arrow keys
+local arrows = {'<Up>', '<Down>', '<Left>', '<Right>'}
+for i=1,#arrows do
+    map('n', arrows[i], function () end)
+    map('i', arrows[i], function () end)
+end
