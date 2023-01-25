@@ -25,8 +25,8 @@ map('n', '<leader>fh', telescope_builtin.help_tags, { desc = 'Help Tags' })
 map('n', '<C-B>', ':NvimTreeToggle<CR>')
 
 -- ToggleTerm
-map('n', '<S-t>', ':ToggleTerm<CR>')
-map('t', '<S-t>', '<C-\\><C-n>:ToggleTerm<CR>')
+map('n', '<C-t>', ':ToggleTerm<CR>')
+map('t', '<C-t>', '<C-\\><C-n>:ToggleTerm<CR>')
 
 --[[ -- Pane navigation
 map('n', '<C-h>', ':wincmd h<CR>')
