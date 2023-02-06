@@ -17,6 +17,7 @@ map('i', '<C-S>', '<ESC>:w<CR>')
 -- Telescope
 local telescope_builtin = require('telescope.builtin')
 map('n', '<leader>ff', telescope_builtin.find_files, { desc = 'Find Files' })
+map('n', '<leader>fF', ":Telescope find_files hidden=true<CR>", { desc = 'Find Files (including hidden)' })
 map('n', '<leader>fg', telescope_builtin.live_grep, { desc = 'Live Grep' })
 map('n', '<leader>fb', telescope_builtin.buffers, { desc = 'Find Buffers' })
 map('n', '<leader>fh', telescope_builtin.help_tags, { desc = 'Help Tags' })
