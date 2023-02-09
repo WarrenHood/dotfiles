@@ -17,6 +17,7 @@ map('i', '<C-S>', '<ESC>:w<CR>')
 -- Telescope
 local telescope_builtin = require('telescope.builtin')
 map('n', '<leader>ff', telescope_builtin.find_files, { desc = 'Find Files' })
+map('n', '<leader>fF', ":Telescope find_files hidden=true<CR>", { desc = 'Find Files (including hidden)' })
 map('n', '<leader>fg', telescope_builtin.live_grep, { desc = 'Live Grep' })
 map('n', '<leader>fb', telescope_builtin.buffers, { desc = 'Find Buffers' })
 map('n', '<leader>fh', telescope_builtin.help_tags, { desc = 'Help Tags' })
@@ -25,8 +26,8 @@ map('n', '<leader>fh', telescope_builtin.help_tags, { desc = 'Help Tags' })
 map('n', '<C-B>', ':NvimTreeToggle<CR>')
 
 -- ToggleTerm
-map('n', '<S-t>', ':ToggleTerm<CR>')
-map('t', '<S-t>', '<C-\\><C-n>:ToggleTerm<CR>')
+map('n', '<C-t>', ':ToggleTerm<CR>')
+map('t', '<C-t>', '<C-\\><C-n>:ToggleTerm<CR>')
 
 --[[ -- Pane navigation
 map('n', '<C-h>', ':wincmd h<CR>')
@@ -144,3 +145,11 @@ map('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>', barbar_opts)
 -- Other:
 -- :BarbarEnable - enables barbar (enabled by default)
 -- :BarbarDisable - very bad command, should never be used
+
+
+-- Disable arrow keys
+local arrows = {'<Up>', '<Down>', '<Left>', '<Right>'}
+for i=1,#arrows do
+    map('n', arrows[i], function () end)
+    map('i', arrows[i], function () end)
+end
