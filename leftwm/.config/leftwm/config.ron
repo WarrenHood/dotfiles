@@ -26,7 +26,7 @@
     max_window_width: None,
     layouts: [
         MainAndVertStack,
-        MainAndHorizontalStack,
+        /* MainAndHorizontalStack, */
         /* MainAndDeck, */
         /* GridHorizontal, */
         /* EvenHorizontal, */
