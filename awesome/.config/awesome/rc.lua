@@ -227,11 +227,7 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
 			-- Colors: #DDDD77 #77DDDD #DD77DD #7777DD #77DD77
         	layout = wibox.layout.fixed.horizontal,
-            arrow("alpha", "#DDDD77"),
-            wibox.container.background( mykeyboardlayout, "#DDDD77"),
-            arrow("#DDDD77", "#77DDDD"),
-            wibox.container.background( nil , "#77DDDD"),
-            arrow("#77DDDD", "#DD77DD"),
+            arrow("alpha", "#DD77DD"),
             wibox.container.background( battery_widget({
                 show_current_level = true,
                 margin_right = 2,
@@ -608,6 +604,13 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+
+-- Stuff to kill just in case
+awful.spawn.once("killall lxsession")
+awful.spawn.once("killall picom")
+awful.spawn.once("kilall nm-applet")
+awful.spawn.once("killall volumeicon")
 
 -- Stuff to start
 -- awful.spawn.once("lxpolkit") -- Polkit
