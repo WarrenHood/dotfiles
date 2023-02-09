@@ -607,14 +607,13 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 
 -- Stuff to kill just in case
-awful.spawn.once("killall lxsession")
+awful.spawn.once("killall lxpolkit")
 awful.spawn.once("killall picom")
 awful.spawn.once("kilall nm-applet")
 awful.spawn.once("killall volumeicon")
 
 -- Stuff to start
--- awful.spawn.once("lxpolkit") -- Polkit
-awful.spawn.once("lxsession") -- Let's run an lxsession which has a polkit
+awful.spawn.once("lxpolkit") -- Let's run an lxpolkit
 awful.spawn.once("picom") -- Compositor
 awful.spawn.once("nm-applet") -- Network Manager applet
 awful.spawn.once("autorandr -l dual") -- Load my dual monitor autorandr config
