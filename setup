@@ -5,12 +5,12 @@ echo "Setting up the stuff..."
 git submodule init
 git submodule update
 
-if [[ "$(uname -a)" == *"Ubuntu"*  ]]
+if [[ "$(cat /etc/os-release)" == *"Ubuntu"*  ]]
 then
     echo "Updating Ubuntu"
     sudo apt update && sudo apt upgrade
     echo "Installing tools/utils"
-    sudo apt install ripgrep fd-find make stow tmux lxsession thunar power-profiles-daemon playerctl network-manager-gnome volumeicon-alsa picom
+    sudo apt install ripgrep fd-find make stow tmux lxsession thunar power-profiles-daemon playerctl network-manager-gnome volumeicon-alsa picom autorandr arandr
 
     echo "Installing arc-icon-theme"
     mkdir -p ~/git
@@ -21,11 +21,11 @@ else
     echo "Updating Arch"
     sudo pacman -Syyu
     echo "Installing tools/utils"
-    sudo pacman -S ripgrep fd neovim make stow tmux awesome dmenu arandr autorandr volumeicon picom nitrogen network-manager-applet lxsession thunar lxappearance-gtk3 power-profiles-daemon thermald acpi arc-icon-theme playerctl
+    sudo pacman -S ripgrep fd neovim make stow tmux awesome dmenu arandr autorandr volumeicon picom nitrogen network-manager-applet lxsession thunar lxappearance-gtk3 -profiles-daemon thermald acpi arc-icon-theme playerctl
 
-    sudo systemctl enable --now power-profiles-daemon
-    sudo thermald --systemd
-    sudo power-profiles-daemon set performance
+    # sudo systemctl enable --now power-profiles-daemon
+    # sudo thermald --systemd
+    # sudo power-profiles-daemon set performance
 fi
 
 

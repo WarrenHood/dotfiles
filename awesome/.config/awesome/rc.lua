@@ -344,7 +344,9 @@ globalkeys = gears.table.join(
     -- Prompt
     -- awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
     --           {description = "run prompt", group = "launcher"}),
-
+    -- Screensaver/lockscreen 
+    awful.key({ modkey, "Control" }, "l", function() awful.util.spawn("xscreensaver-command -lock") end,
+        { description = "lock screen", group = "lockscreen" }),
     -- dmenu
     awful.key({ modkey }, "r", function() awful.util.spawn("dmenu_run") end,
         { description = "show dmenu", group = "launcher" }),
@@ -616,7 +618,7 @@ awful.spawn.once("killall volumeicon")
 awful.spawn.once("lxpolkit") -- Let's run an lxpolkit
 awful.spawn.once("picom") -- Compositor
 awful.spawn.once("nm-applet") -- Network Manager applet
-awful.spawn.once("autorandr -l dual") -- Load my dual monitor autorandr config
+-- awful.spawn("autorandr -l dual") -- Load my dual monitor autorandr config
 awful.spawn.once("volumeicon") -- Volume icon
 
 -- Wallpaper
