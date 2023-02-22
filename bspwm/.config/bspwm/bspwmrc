@@ -1,17 +1,21 @@
 #!/usr/bin/env bash
 
 autorandr -l dual
+
+# Kill some of the stuff we usually start
+pkill volumeicon
 pkill polybar
-polybar & 
+pkill picom
+pkill nm-applet
+
+# Start up some things
 WALLPAPER="current.jpg"
 feh --bg-center "$HOME/wallpapers/$WALLPAPER"
 systemctl --user start gnome-keyring-daemon.service &
-pkill picom
 picom &
-pkill nm-applet
 nm-applet &
-pkill volumeicon
 volumeicon &
+polybar main & 
 
 
 bspc monitor -d I II III IV V VI VII VIII IX X
