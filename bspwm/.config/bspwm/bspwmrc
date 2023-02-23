@@ -16,14 +16,15 @@ systemctl --user start spotifyd &
 picom &
 nm-applet &
 volumeicon &
-polybar main & 
+# polybar main & 
+$HOME/.config/polybar/launch.sh
 
 # Ensure we have the correct cursor
 xsetroot -cursor_name left_ptr
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 
-bspc monitor -d CHAT DEV WEB MISC
+bspc monitor -d chat dev web misc music
 
 bspc config border_width         1
 bspc config window_gap          8
