@@ -18,7 +18,7 @@ else
     sudo pacman -Syyu
     echo "Installing tools/utils"
     sudo pacman -S ripgrep fd neovim make stow tmux
-    sudo pacman -S ripgrep fd neovim make stow tmux dmenu arandr autorandr volumeicon picom nitrogen network-manager-applet lxsession thunar lxappearance-gtk3 power-profiles-daemon thermald acpi arc-icon-theme playerctl bspwm sxhkd
+    sudo pacman -S ripgrep fd neovim make stow tmux dmenu arandr autorandr volumeicon picom nitrogen network-manager-applet lxsession thunar lxappearance-gtk3 power-profiles-daemon thermald acpi arc-icon-theme playerctl bspwm sxhkd polybar
     sudo systemctl enable --now power-profiles-daemon
     sudo thermald --systemd
     sudo power-profiles-daemon set performance
