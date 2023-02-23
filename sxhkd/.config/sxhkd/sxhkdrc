@@ -18,6 +18,20 @@ super + Escape
 super + b
     firefox
 
+
+# Media buttons
+XF86AudioPlay
+    playerctl play-pause
+
+XF86AudioStop
+    playerctl play-pause
+
+XF86AudioPrev
+    playerctl previous
+
+XF86AudioNext
+    playerctl next
+
 #
 # bspwm hotkeys
 #

@@ -12,6 +12,7 @@ pkill nm-applet
 WALLPAPER="current.jpg"
 feh --bg-center "$HOME/wallpapers/$WALLPAPER"
 systemctl --user start gnome-keyring-daemon.service &
+systemctl --user start spotifyd &
 picom &
 nm-applet &
 volumeicon &
