@@ -27,14 +27,14 @@ theme.bg_minimize   = "#222222"
 theme.bg_systray    = "#7777DD"
 
 theme.fg_normal     = "#FFFFFF"
-theme.fg_focus      = "#77DD77"
+theme.fg_focus      = "#77DDDD"
 theme.fg_urgent     = "#FFFFFF"
 theme.fg_minimize   = "#AAAAAA"
 
 theme.useless_gap   = dpi(6)
 theme.border_width  = dpi(2)
 theme.border_normal = "#333333"
-theme.border_focus  = "#77DD77"
+theme.border_focus  = "#77D7D7"
 theme.border_marked = "#900090"
 
 -- There are other variable sets
