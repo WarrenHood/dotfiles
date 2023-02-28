@@ -1,3 +1,7 @@
+[shell]
+style = 'cyan bold'
+disabled = false
+
 [aws]
 format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
 
