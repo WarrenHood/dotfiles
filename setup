@@ -51,3 +51,6 @@ nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 add_to_file "alias nv='nvim'" "$HOME/.zshrc"
 add_to_file 'eval "$(starship init bash)"' "$HOME/.bashrc"
 add_to_file 'eval "$(starship init zsh)"' "$HOME/.zshrc"
+
+add_to_file 'export PATH="$PATH:$HOME/.scripts"' "$HOME/.zshrc"
+add_to_file 'export PATH="$PATH:$HOME/.scripts"' "$HOME/.bashrc"
