@@ -2,6 +2,9 @@
 
 echo "Setting up the stuff..."
 
+git submodule init
+git submodule update
+
 if [[ "$(cat /etc/os-release)" == *"Ubuntu"*  ]]
 then
     echo "Updating Ubuntu"
@@ -17,8 +20,8 @@ else
     echo "Updating Arch"
     sudo pacman -Syyu
     echo "Installing tools/utils"
-    sudo pacman -S ripgrep fd neovim make stow tmux
-    sudo pacman -S ripgrep fd neovim make stow tmux dmenu arandr autorandr volumeicon picom nitrogen network-manager-applet lxsession thunar lxappearance-gtk3 power-profiles-daemon thermald acpi arc-icon-theme playerctl bspwm sxhkd polybar xorg-xsetroot ttf-jetbrains-mono-nerd
+    sudo pacman -S ripgrep fd neovim make stow tmux awesome dmenu arandr autorandr volumeicon picom nitrogen network-manager-applet lxsession thunar lxappearance-gtk3 power-profiles-daemon thermald acpi arc-icon-theme playerctl bspwm sxhkd polybar xorg-xsetroot ttf-jetbrains-mono-nerd
+
     sudo systemctl enable --now power-profiles-daemon
     sudo thermald --systemd
     sudo power-profiles-daemon set performance
