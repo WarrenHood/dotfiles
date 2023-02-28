@@ -227,16 +227,16 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
 			-- Colors: #DDDD77 #77DDDD #DD77DD #7777DD #77DD77
         	layout = wibox.layout.fixed.horizontal,
-            arrow("alpha", "#DD77DD"),
+            arrow("alpha", "#77DDAA"),
             wibox.container.background( battery_widget({
                 show_current_level = true,
                 margin_right = 2,
-            }), "#DD77DD"),
-            arrow("#DD77DD", "#7777DD"),
-            wibox.container.background( wibox.widget.systray(), "#7777DD"),
-            arrow("#7777DD", "#77DD77"),
-            wibox.container.background( mytextclock, "#77DD77"),
-            arrow("#77DD77", "alpha"),
+            }), "#77DDAA"),
+            arrow("#77DDAA", "#777777"),
+            wibox.container.background( wibox.widget.systray(), "#77DDAA"),
+            arrow("#777777", "#77DDDD"),
+            wibox.container.background( mytextclock, "#77DDDD"),
+            arrow("#77DDDD", "alpha"),
             s.mylayoutbox,
         },
     }
