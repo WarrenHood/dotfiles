@@ -17,6 +17,9 @@ then
     git clone https://github.com/horst3180/arc-icon-theme --depth 1 ~/git/arc-icon-theme && cd ~/git/arc-icon-theme
     ./autogen.sh --prefix=/usr
     sudo make install
+
+    echo "Installing starship prompt"
+    curl -sS https://starship.rs/install.sh | sh
 else
     echo "Updating Arch"
     sudo pacman -Syyu
@@ -47,4 +50,5 @@ nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
 # Add aliases to zshrc
 add_to_file "alias nv='nvim'" "$HOME/.zshrc"
-
+add_to_file 'eval "$(starship init bash)"' "$HOME/.bashrc"
+add_to_file 'eval "$(starship init zsh)"' "$HOME/.zshrc"
