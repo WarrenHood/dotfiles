@@ -10,8 +10,7 @@ then
     echo "Updating Ubuntu"
     sudo apt update && sudo apt upgrade
     echo "Installing tools/utils"
-    sudo apt install ripgrep fd-find make stow tmux lxsession thunar power-profiles-daemon playerctl network-manager-gnome volumeicon-alsa picom autorandr arandr
-
+    sudo apt install ripgrep fd-find make stow tmux lxsession thunar power-profiles-daemon playerctl network-manager-gnome volumeicon-alsa picom autorandr arandr neofetch
     echo "Installing arc-icon-theme"
     mkdir -p ~/git
     git clone https://github.com/horst3180/arc-icon-theme --depth 1 ~/git/arc-icon-theme && cd ~/git/arc-icon-theme
@@ -24,7 +23,7 @@ else
     echo "Updating Arch"
     sudo pacman -Syyu
     echo "Installing tools/utils"
-    sudo pacman -S ripgrep fd neovim make stow tmux awesome dmenu arandr autorandr volumeicon picom nitrogen network-manager-applet lxsession thunar lxappearance-gtk3 power-profiles-daemon thermald acpi arc-icon-theme playerctl bspwm sxhkd polybar xorg-xsetroot ttf-jetbrains-mono-nerd starship breeze breeze-gtk breeze-icons pass nushell
+    sudo pacman -S ripgrep fd neovim make stow tmux awesome dmenu arandr autorandr volumeicon picom nitrogen network-manager-applet lxsession thunar lxappearance-gtk3 power-profiles-daemon thermald acpi arc-icon-theme playerctl bspwm sxhkd polybar xorg-xsetroot ttf-jetbrains-mono-nerd starship breeze breeze-gtk breeze-icons pass nushell neofetch
 
     sudo systemctl enable --now power-profiles-daemon
     sudo thermald --systemd
@@ -55,3 +54,7 @@ add_to_file 'eval "$(starship init zsh)"' "$HOME/.zshrc"
 
 add_to_file 'export PATH="$PATH:$HOME/.scripts"' "$HOME/.zshrc"
 add_to_file 'export PATH="$PATH:$HOME/.scripts"' "$HOME/.bashrc"
+
+# Run neofetch when we open a terminal coz it's cool
+add_to_file 'neofetch' "$HOME/.bashrc"
+add_to_file 'neofetch' "$HOME/.zshrc"
