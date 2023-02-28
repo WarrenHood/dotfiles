@@ -427,7 +427,7 @@ font:
 
 # Tiling WM setup - don't need tmux
 shell:
-  program: /bin/zsh
+  program: /bin/bash
   args:
     - -l
   #   - -c
