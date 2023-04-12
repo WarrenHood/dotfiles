@@ -145,6 +145,8 @@ require("packer").startup(function()
             require("nvim-dap-virtual-text").setup()
         end
     } -- Virtual text for nvim-dap
+    
+    use { "jay-babu/mason-nvim-dap.nvim" }
 
     -- Tab
     use {
