@@ -153,3 +153,9 @@ for i=1,#arrows do
     map('n', arrows[i], function () end)
     map('i', arrows[i], function () end)
 end
+
+-- Code actions with ctrl + .
+map('n', '<Leader>.', function() vim.lsp.buf.code_action({ apply = true}) end, { desc = 'Code action/Quick fix' })
+
+-- Show telescope commands fuzzy finder
+map('n', '<Leader><Leader>', function() require('telescope.builtin').commands() end, { desc = 'Show commands' })
