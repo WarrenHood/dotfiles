@@ -1,10 +1,26 @@
 # Nushell Environment Config File
+#
+# version = 0.78.1
 
 def create_left_prompt [] {
+    mut home = ""
+    try {
+        if $nu.os-info.name == "windows" {
+            $home = $env.USERPROFILE
+        } else {
+            $home = $env.HOME
+        }
+    }
+
+    let dir = ([
+        ($env.PWD | str substring 0..($home | str length) | str replace -s $home "~"),
+        ($env.PWD | str substring ($home | str length)..)
+    ] | str join)
+
     let path_segment = if (is-admin) {
-        $"(ansi red_bold)($env.PWD)"
+        $"(ansi red_bold)($dir)"
     } else {
-        $"(ansi green_bold)($env.PWD)"
+        $"(ansi green_bold)($dir)"
     }
 
     $path_segment
@@ -12,22 +28,30 @@ def create_left_prompt [] {
 
 def create_right_prompt [] {
     let time_segment = ([
+        (ansi reset)
+        (ansi magenta)
         (date now | date format '%m/%d/%Y %r')
     ] | str join)
 
-    $time_segment
+    let last_exit_code = if ($env.LAST_EXIT_CODE != 0) {([
+        (ansi rb)
+        ($env.LAST_EXIT_CODE)
+    ] | str join)
+    } else { "" }
+
+    ([$last_exit_code, (char space), $time_segment] | str join)
 }
 
 # Use nushell functions to define your right and left prompt
-let-env PROMPT_COMMAND = { create_left_prompt }
-let-env PROMPT_COMMAND_RIGHT = { create_right_prompt }
+let-env PROMPT_COMMAND = {|| create_left_prompt }
+let-env PROMPT_COMMAND_RIGHT = {|| create_right_prompt }
 
 # The prompt indicators are environmental variables that represent
 # the state of the prompt
-let-env PROMPT_INDICATOR = { "〉" }
-let-env PROMPT_INDICATOR_VI_INSERT = { ": " }
-let-env PROMPT_INDICATOR_VI_NORMAL = { "〉" }
-let-env PROMPT_MULTILINE_INDICATOR = { "::: " }
+let-env PROMPT_INDICATOR = {|| "> " }
+let-env PROMPT_INDICATOR_VI_INSERT = {|| ": " }
+let-env PROMPT_INDICATOR_VI_NORMAL = {|| "> " }
+let-env PROMPT_MULTILINE_INDICATOR = {|| "::: " }
 
 # Specifies how environment variables are:
 # - converted from a string to a value on Nushell startup (from_string)
@@ -47,19 +71,19 @@ let-env ENV_CONVERSIONS = {
 # Directories to search for scripts when calling source or use
 #
 # By default, <nushell-config-dir>/scripts is added
-let-env NU_LIB_DIRS = [
-    ($nu.config-path | path dirname | path join 'scripts')
-]
+# let-env NU_LIB_DIRS = [
+    # ($nu.default-config-dir | path join 'scripts')
+# ]
 
 # Directories to search for plugin binaries when calling register
 #
 # By default, <nushell-config-dir>/plugins is added
-let-env NU_PLUGIN_DIRS = [
-    ($nu.config-path | path dirname | path join 'plugins')
-]
+# let-env NU_PLUGIN_DIRS = [
+    # ($nu.default-config-dir | path join 'plugins')
+# ]
 
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
-# let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
+# let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path') let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
 
 mkdir ~/.cache/starship
 starship init nu | save -f ~/.cache/starship/init.nu
