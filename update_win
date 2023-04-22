@@ -2,7 +2,7 @@ print "Pulling latest changes"
 git fetch
 git pull
 print "Copying over neovim configs"
-cp -r neovim/.config/nvim ~/AppData/Local/nvim
+cp -r neovim/.config/nvim ~/AppData/Local
 print "Updating nushell configs"
 cp -r nushell/.config/nushell/env.nu $nu.env-path
 cp -r nushell/.config/nushell/config.nu $nu.config-path
