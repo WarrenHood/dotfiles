@@ -1,0 +1,19 @@
+print "Pulling latest changes"
+git fetch
+git pull
+print "Copying over neovim configs"
+cp -r neovim/.config/nvim ~/AppData/Local/nvim
+print "Updating nushell configs"
+cp -r nushell/.config/nushell/env.nu $nu.env-path
+cp -r nushell/.config/nushell/config.nu $nu.config-path
+print "Updating starship prompt configs"
+mkdir ~/.config
+cp starship/.config/starship.toml ~/.config/
+print "Updating neovim"
+do -i { winget install Neovim.Neovim }
+
+print "Updating nushell"
+do -i { winget install nushell }
+
+print "Updating starship prompt"
+do -i { winget install --id Starship.Starship }
