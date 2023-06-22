@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Neovim
+Comment=The best editor
+Exec=nvim
+Terminal=true
+Type=Application
+Icon=terminal
+Categories=Utility;TextEditor;
+StartupNotify=true
+MimeType=text/plain;
