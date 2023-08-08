@@ -10,10 +10,11 @@ then
     echo "Updating Ubuntu"
     sudo apt update && sudo apt upgrade
     echo "Installing tools/utils"
-    sudo apt install ripgrep fd-find make stow tmux lxsession thunar power-profiles-daemon playerctl network-manager-gnome volumeicon-alsa picom autorandr arandr neofetch
+    sudo apt install ripgrep fd-find make stow tmux lxsession thunar power-profiles-daemon playerctl network-manager-gnome volumeicon-alsa picom autorandr arandr neofetch autoconf
     echo "Installing arc-icon-theme"
     mkdir -p ~/git
-    git clone https://github.com/horst3180/arc-icon-theme --depth 1 ~/git/arc-icon-theme && cd ~/git/arc-icon-theme
+    git clone https://github.com/horst3180/arc-icon-theme --depth 1 ~/git/arc-icon-theme
+    cd ~/git/arc-icon-theme
     ./autogen.sh --prefix=/usr
     sudo make install
 
