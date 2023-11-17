@@ -85,3 +85,8 @@ require('which-key').register({
 	},
 
 }, { prefix = "<leader>" })
+
+
+-- indent-blankline setup
+require('ibl').setup()
+
