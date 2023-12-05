@@ -5,11 +5,33 @@ echo "Setting up the stuff..."
 git submodule init
 git submodule update
 
+! command -v git &> /dev/null && echo "Ensure git is install before running this" && exit -1
+
+[[ ! -d ~/git ]] && echo "Creating git directory in $HOME" && mkdir ~/git
 
 # Wayland + Hyprland seems cool
 setup_hyprland_arch() {
     echo "Setting up Hyprland..."
     sudo pacman -S wayland hyprland waybar dmenu dunst pipewire wireplumber xdg-desktop-portal-hyprland polkit-kde-agent qt5-wayland qt6-wayland
+
+    # grim + slurp + swappy for screenshots
+    sudo pacman -S grim slurp swappy wl-clipboard
+}
+
+
+# Setup paru
+setup_paru() {
+    if ! command -v paru &> /dev/null; then
+        echo "Setting up paru..."
+        pushd ~/git
+        sudo pacman -S --needed base-devel
+        git clone https://aur.archlinux.org/paru.git
+        cd paru
+        makepkg -si
+        popd
+    else
+        echo "paru is already installed"
+    fi
 }
 
 
@@ -39,6 +61,9 @@ else
     # sudo pacman -S thermald
     # sudo systemctl enable --now thermald
     # sudo thermald --systemd
+    
+    # Install paru
+    setup_paru
 
     # Install wayland + hyprland
     setup_hyprland_arch
