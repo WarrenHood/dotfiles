@@ -5,6 +5,14 @@ echo "Setting up the stuff..."
 git submodule init
 git submodule update
 
+
+# Wayland + Hyprland seems cool
+setup_hyprland_arch() {
+    echo "Setting up Hyprland..."
+    sudo pacman -S wayland hyprland waybar dmenu dunst pipewire wireplumber xdg-desktop-portal-hyprland polkit-kde-agent qt5-wayland qt6-wayland
+}
+
+
 if [[ "$(cat /etc/os-release)" == *"Ubuntu"*  ]]
 then
     echo "Updating Ubuntu"
@@ -32,13 +40,19 @@ else
     # sudo systemctl enable --now thermald
     # sudo thermald --systemd
 
-    sudo powerprofilesctl set performance
+    # Install wayland + hyprland
+    setup_hyprland_arch
+
+    # sudo powerprofilesctl set performance
 fi
 
 
 # tmux plugin manager and theme
-echo "Installing tmux plugin manager... Don't forget to press <C-a><S-i> in a new tmux session later"
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+if [[ ! -d ~/.tmux/plugins/tpm ]]; then
+    echo "Installing tmux plugin manager... Don't forget to press <C-a><S-i> in a new tmux session later"
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+fi
 
 add_to_file() {
     if grep -Fxq "$1" $2
@@ -50,8 +64,6 @@ add_to_file() {
     fi
 }
 
-nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
-
 # Add aliases to zshrc
 add_to_file "alias nv='nvim'" "$HOME/.zshrc"
 add_to_file 'eval "$(starship init bash)"' "$HOME/.bashrc"
@@ -60,6 +72,14 @@ add_to_file 'eval "$(starship init zsh)"' "$HOME/.zshrc"
 add_to_file 'export PATH="$PATH:$HOME/.scripts"' "$HOME/.zshrc"
 add_to_file 'export PATH="$PATH:$HOME/.scripts"' "$HOME/.bashrc"
 
+# Set GTK_THEME
+add_to_file 'export GTK_THEME=Breeze:dark' "$HOME/.zshrc"
+add_to_file 'export GTK_THEME=Breeze:dark' "$HOME/.bashrc"
+
 # Run neofetch when we open a terminal coz it's cool
 add_to_file 'neofetch' "$HOME/.bashrc"
 add_to_file 'neofetch' "$HOME/.zshrc"
+
+# I suppose we might as well just try setting up nvim
+echo "Running PackerSync in neovim..."
+nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
