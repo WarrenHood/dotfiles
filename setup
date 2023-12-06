@@ -16,6 +16,9 @@ setup_hyprland_arch() {
 
     # grim + slurp + swappy for screenshots
     sudo pacman -S grim slurp swappy wl-clipboard
+
+    # wdisplays is a decent looking GUI similar to arandr but for Wayland
+    paru -S wdisplays
 }
 
 
@@ -100,6 +103,8 @@ add_to_file 'export PATH="$PATH:$HOME/.scripts"' "$HOME/.bashrc"
 # Set GTK_THEME
 add_to_file 'export GTK_THEME=Breeze:dark' "$HOME/.zshrc"
 add_to_file 'export GTK_THEME=Breeze:dark' "$HOME/.bashrc"
+gsettings set org.gnome.desktop.interface gtk-theme 'Breeze-dark'
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
 # Run neofetch when we open a terminal coz it's cool
 add_to_file 'neofetch' "$HOME/.bashrc"
