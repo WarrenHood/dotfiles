@@ -56,7 +56,7 @@ else
     echo "Updating Arch"
     sudo pacman -Syyu
     echo "Installing tools/utils"
-    sudo pacman -S ripgrep fd neovim make stow tmux awesome dmenu arandr autorandr volumeicon picom nitrogen network-manager-applet lxsession thunar lxappearance-gtk3 power-profiles-daemon acpi arc-icon-theme playerctl bspwm sxhkd polybar xorg-xsetroot ttf-jetbrains-mono-nerd ttf-mononoki-nerd ttf-nerd-fonts-symbols-mono ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-common starship breeze breeze-gtk breeze-icons pass nushell neofetch
+    sudo pacman -S ripgrep fd neovim make stow tmux awesome dmenu arandr autorandr volumeicon picom nitrogen network-manager-applet lxsession thunar lxappearance-gtk3 power-profiles-daemon acpi arc-icon-theme playerctl bspwm sxhkd polybar xorg-xsetroot ttf-jetbrains-mono-nerd ttf-mononoki-nerd ttf-nerd-fonts-symbols-mono ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-common starship breeze breeze-gtk breeze-icons pass nushell neofetch man-db
 
     sudo systemctl enable --now power-profiles-daemon
 
