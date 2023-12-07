@@ -9,7 +9,7 @@ git submodule update
 
 [[ ! -d ~/git ]] && echo "Creating git directory in $HOME" && mkdir ~/git
 
-# Wayland + Hyprland seems cool
+# Wayland + Hyprland is quite nice
 setup_hyprland_arch() {
     echo "Setting up Hyprland..."
     sudo pacman -S wayland hyprland waybar wofi dunst pipewire wireplumber xdg-desktop-portal-hyprland polkit-kde-agent qt5-wayland qt6-wayland
@@ -21,6 +21,42 @@ setup_hyprland_arch() {
     paru -S wdisplays
 }
 
+# AwesomeWM (X11) - not a bad tiling WM
+setup_awesomewm() {
+    if [[ "$(cat /etc/os-release)" == *"Ubuntu"* ]]; then
+        sudo apt install awesome
+    else
+        sudo pacman -S awesome
+    fi
+    
+}
+
+# SDDM
+# Uses Wayland is display server. Requires weston by default
+setup_sddm() {
+    echo "Installing SDDM"
+    if [[ "$(cat /etc/os-release)" == *"Ubuntu"* ]]; then
+        sudo apt install sddm weston
+    else
+        sudo pacman -S sddm weston
+    fi
+
+    echo "Setting SDDM to use wayland"
+    # Set sddm to use wayland
+    sudo tee /etc/sddm.conf.d/10-wayland.conf <<SDDMWayland > /dev/null
+[General]
+DisplayServer=wayland
+SDDMWayland
+}
+
+# bspwm - it's okay
+setup_bspwm() {
+    if [[ "$(cat /etc/os-release)" == *"Ubuntu"* ]]; then
+        echo "TODO: Figure out how to setup bspwm on Ubuntu"
+    else
+        sudo pacman -S bspwm sxhkd polybar
+    fi
+}
 
 # Setup paru
 setup_paru() {
@@ -37,8 +73,21 @@ setup_paru() {
     fi
 }
 
+# Intel specific setup
+# TODO: Auto detect intel and run this
+setup_intel() {
+    echo "Setting up thermald for Intel"
+    if [[ "$(cat /etc/os-release)" == *"Ubuntu"*  ]]; then
+        sudo apt install thermald
+    else
+        sudo pacman -S thermald
+    fi
+    sudo systemctl enable --now thermald
+    sudo thermald --systemd
+}
 
-if [[ "$(cat /etc/os-release)" == *"Ubuntu"*  ]]
+
+if [[ "$(cat /etc/os-release)" == *"Ubuntu"* ]]
 then
     echo "Updating Ubuntu"
     sudo apt update && sudo apt upgrade
@@ -56,23 +105,18 @@ else
     echo "Updating Arch"
     sudo pacman -Syyu
     echo "Installing tools/utils"
-    sudo pacman -S ripgrep fd neovim make stow tmux awesome dmenu arandr autorandr volumeicon picom nitrogen network-manager-applet lxsession thunar lxappearance-gtk3 power-profiles-daemon acpi arc-icon-theme playerctl bspwm sxhkd polybar xorg-xsetroot ttf-jetbrains-mono-nerd ttf-mononoki-nerd ttf-nerd-fonts-symbols-mono ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-common starship breeze breeze-gtk breeze-icons pass nushell neofetch man-db
+    sudo pacman -S ripgrep fd neovim make stow tmux dmenu arandr autorandr volumeicon picom nitrogen network-manager-applet lxsession thunar lxappearance-gtk3 power-profiles-daemon acpi arc-icon-theme playerctl xorg-xsetroot ttf-jetbrains-mono-nerd ttf-mononoki-nerd ttf-nerd-fonts-symbols-mono ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-common starship breeze breeze-gtk breeze-icons pass nushell neofetch man-db
 
     sudo systemctl enable --now power-profiles-daemon
 
-    # Intel only...
-    # sudo pacman -S thermald
-    # sudo systemctl enable --now thermald
-    # sudo thermald --systemd
-    
     # Install paru
     setup_paru
 
     # Install wayland + hyprland
     setup_hyprland_arch
-
-    # sudo powerprofilesctl set performance
 fi
+
+setup_sddm
 
 
 # tmux plugin manager and theme
@@ -111,5 +155,6 @@ add_to_file 'neofetch' "$HOME/.bashrc"
 add_to_file 'neofetch' "$HOME/.zshrc"
 
 # I suppose we might as well just try setting up nvim
-echo "Running PackerSync in neovim..."
-nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+# I am commenting this out for now coz it's annoying
+# echo "Running PackerSync in neovim..."
+# nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
