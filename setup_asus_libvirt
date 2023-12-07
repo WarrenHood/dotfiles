@@ -1,0 +1,82 @@
+#!/bin/bash
+# This is a simple script to automate the process described by https://asus-linux.org/wiki/vfio-guide/#chapter-3-creating-our-vm
+
+echo "Setting up libvirt hooks"
+sudo mkdir -p /etc/libvirt/hooks/qemu.d && sudo wget 'https://asus-linux.org/files/vfio/libvirt_hooks/qemu' -O /etc/libvirt/hooks/qemu && sudo chmod +x /etc/libvirt/hooks/qemu
+
+echo "Restarting libvirtd"
+sudo systemctl restart libvirtd
+
+echo "Creating libvirt hook dirs for vm: 'win10'"
+sudo mkdir -p /etc/libvirt/hooks/qemu.d/win10/prepare/begin
+sudo mkdir -p /etc/libvirt/hooks/qemu.d/win10/release/end
+
+echo "Creating vm-vars conf file for win10 vm"
+sudo tee /etc/libvirt/hooks/qemu.d/win10/vm-vars.conf <<LIBVIRT_CONFIG > /dev/null
+## Win10 VM Script Parameters
+
+# How much memory we've assigned to the VM, in kibibytes 
+VM_MEMORY=8388608
+
+# Set the governor to use when the VM is on, and which 
+# one we should return to once the VM is shut down
+VM_ON_GOVERNOR=performance
+VM_OFF_GOVERNOR=balanced
+
+# Set the powerprofiles ctl profile to performance when 
+# the VM is on, and power-saver when the VM is shut down
+VM_ON_PWRPROFILE=performance
+VM_OFF_PWRPROFILE=performance
+
+# Set which CPU's to isolate, and your system's total
+# CPU's. For example, an 8-core, 16-thread processor has 
+# 16 CPU's to the system, numbered 0-15. For a 6-core,
+# 12-thread processor, 0-11. The SYS_TOTAL_CPUS variable 
+# should always reflect this.
+#
+# EXAMPLE=0-3,8-11
+# EXAMPLE=0,4,8,12
+# EXAMPLE=0-3,8,11,12-15
+VM_ISOLATED_CPUS=0-12
+SYS_TOTAL_CPUS=0-15
+LIBVIRT_CONFIG
+
+echo "Creating win10 vm libvirt startup hook"
+sudo tee /etc/libvirt/hooks/qemu.d/win10/prepare/begin/10-asusd-vfio.sh <<LIBVIRT_BEGIN_HOOK > /dev/null
+#!/bin/bash
+
+## Load VM variables
+source "/etc/libvirt/hooks/qemu.d/win10/vm-vars.conf"
+
+## Use supergfxctl to set graphics mode to vfio
+echo "Setting graphics mode to VFIO..."
+supergfxctl -m vfio
+
+echo "Graphics mode set!"
+sleep 1
+LIBVIRT_BEGIN_HOOK
+
+
+echo "Creating win10 vm libvirt shutdown hook"
+sudo tee /etc/libvirt/hooks/qemu.d/win10/release/end/40-asusd-integrated.sh <<LIBVIRT_END_HOOK > /dev/null
+#!/bin/bash
+
+## Load VM variables
+source "/etc/libvirt/hooks/qemu.d/win10/vm-vars.conf"
+
+## Use supergfxctl to set graphics mode to vfio
+echo "Resetting graphics mode back to integrated..."
+supergfxctl -m integrated
+
+echo "Graphics mode reset!"
+sleep 1
+LIBVIRT_END_HOOK
+
+echo "Making hook scripts executable"
+sudo chmod +x /etc/libvirt/hooks/qemu.d/win10/prepare/begin/10-asusd-vfio.sh
+sudo chmod +x /etc/libvirt/hooks/qemu.d/win10/release/end/40-asusd-integrated.sh
+
+echo "Adding user '$(whoami)' to libvirt and kvm groups"
+sudo usermod -aG libvirt,kvm $(whoami)
+
+echo "Done! Remember to set graphics mode to vfio in supergfxctl before creating the win10 VM"

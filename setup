@@ -58,6 +58,16 @@ setup_bspwm() {
     fi
 }
 
+setup_bluetooth() {
+    echo "Setting up bluetooth"
+    if [[ "$(cat /etc/os-release)" == *"Ubuntu"* ]]; then
+        echo "TODO: Figure out how to setup bluetooth on Ubuntu"
+    else
+        sudo pacman -S bluez bluez-utils
+    fi
+    sudo systemctl enable --now bluetooth
+}
+
 # Setup paru
 setup_paru() {
     if ! command -v paru &> /dev/null; then
@@ -105,7 +115,7 @@ else
     echo "Updating Arch"
     sudo pacman -Syyu
     echo "Installing tools/utils"
-    sudo pacman -S ripgrep fd neovim make stow tmux dmenu arandr autorandr volumeicon picom nitrogen network-manager-applet lxsession thunar lxappearance-gtk3 power-profiles-daemon acpi arc-icon-theme playerctl xorg-xsetroot ttf-jetbrains-mono-nerd ttf-mononoki-nerd ttf-nerd-fonts-symbols-mono ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-common starship breeze breeze-gtk breeze-icons pass nushell neofetch man-db python
+    sudo pacman -S ripgrep fd neovim make stow tmux dmenu arandr autorandr volumeicon picom nitrogen network-manager-applet lxsession thunar lxappearance-gtk3 power-profiles-daemon acpi arc-icon-theme playerctl xorg-xsetroot ttf-jetbrains-mono-nerd ttf-mononoki-nerd ttf-nerd-fonts-symbols-mono ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-common starship breeze breeze-gtk breeze-icons pass nushell neofetch man-db python wget qemu-audio-jack jack-example-tools
 
     sudo systemctl enable --now power-profiles-daemon
 
@@ -116,6 +126,7 @@ else
     setup_hyprland_arch
 fi
 
+setup_bluetooth
 setup_sddm
 
 

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+echo "Setting up KVM for Arch Linux"
+sudo pacman -S qemu libvirt edk2-ovmf virt-manager ebtables dnsmasq
+
+# Check if IOMMU is supported
+dmesg_iommu_out=$(sudo dmesg | grep -i -e DMAR -e IOMMU)
+if [[ $dmesg_iommu_out ]]; then
+    echo "IOMMU Supported:"
+    echo "$dmesg_iommu_out"
+else
+    echo "IOMMU not supported"
+fi
+
+echo "It's probably a good idea to reboot now..."
