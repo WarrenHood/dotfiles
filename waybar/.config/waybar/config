@@ -5,9 +5,9 @@
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["hyprland/workspaces", "sway/mode", "sway/scratchpad", "custom/media"],
+    "modules-left": ["hyprland/workspaces", "custom/media"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["mpd", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "hyprland/language", "battery", "battery#bat2", "clock", "tray"],
+    "modules-right": ["gamemode", "pulseaudio", "network", "cpu", "memory", "temperature", "battery", "clock", "tray"],
     // Modules configuration
     "hyprland/workspaces": {
          "format": "{icon}",
@@ -18,22 +18,6 @@
         "max-length": 200,
         "separate-outputs": true
     },
-    // "sway/workspaces": {
-    //     "disable-scroll": true,
-    //     "all-outputs": true,
-    //     "warp-on-scroll": false,
-    //     "format": "{name}: {icon}",
-    //     "format-icons": {
-    //         "1": "",
-    //         "2": "",
-    //         "3": "",
-    //         "4": "",
-    //         "5": "",
-    //         "urgent": "",
-    //         "focused": "",
-    //         "default": ""
-    //     }
-    // },
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
@@ -42,16 +26,6 @@
             "locked": "",
             "unlocked": ""
         }
-    },
-    "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
-    },
-    "sway/scratchpad": {
-        "format": "{icon} {count}",
-        "show-empty": false,
-        "format-icons": ["", ""],
-        "tooltip": true,
-        "tooltip-format": "{app}: {title}"
     },
     "mpd": {
         "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
@@ -132,6 +106,18 @@
     "battery#bat2": {
         "bat": "BAT2"
     },
+    "gamemode": {
+        "format": "{glyph}",
+        "format-alt": "{glyph} {count}",
+        "glyph": "",
+        "hide-not-running": true,
+        "use-icon": true,
+        "icon-name": "input-gaming-symbolic",
+        "icon-spacing": 4,
+        "icon-size": 20,
+        "tooltip": true,
+        "tooltip-format": "Games running: {count}"
+    },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "{essid} ({signalStrength}%) ",
@@ -169,8 +155,7 @@
             "default": "🎜"
         },
         "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+        "exec": "python $HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Filter player based on name
     }
 }
 

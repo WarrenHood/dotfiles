@@ -18,7 +18,7 @@ setup_hyprland_arch() {
     sudo pacman -S grim slurp swappy wl-clipboard
 
     # wdisplays is a decent looking GUI similar to arandr but for Wayland
-    paru -S wdisplays
+    paru -S wdisplays xwaylandvideobridge-bin
 }
 
 # AwesomeWM (X11) - not a bad tiling WM
@@ -105,7 +105,7 @@ else
     echo "Updating Arch"
     sudo pacman -Syyu
     echo "Installing tools/utils"
-    sudo pacman -S ripgrep fd neovim make stow tmux dmenu arandr autorandr volumeicon picom nitrogen network-manager-applet lxsession thunar lxappearance-gtk3 power-profiles-daemon acpi arc-icon-theme playerctl xorg-xsetroot ttf-jetbrains-mono-nerd ttf-mononoki-nerd ttf-nerd-fonts-symbols-mono ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-common starship breeze breeze-gtk breeze-icons pass nushell neofetch man-db
+    sudo pacman -S ripgrep fd neovim make stow tmux dmenu arandr autorandr volumeicon picom nitrogen network-manager-applet lxsession thunar lxappearance-gtk3 power-profiles-daemon acpi arc-icon-theme playerctl xorg-xsetroot ttf-jetbrains-mono-nerd ttf-mononoki-nerd ttf-nerd-fonts-symbols-mono ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-common starship breeze breeze-gtk breeze-icons pass nushell neofetch man-db python
 
     sudo systemctl enable --now power-profiles-daemon
 
