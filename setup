@@ -12,13 +12,13 @@ git submodule update
 # Wayland + Hyprland is quite nice
 setup_hyprland_arch() {
     echo "Setting up Hyprland..."
-    sudo pacman -S wayland hyprland waybar wofi dunst pipewire wireplumber xdg-desktop-portal-hyprland polkit-kde-agent qt5-wayland qt6-wayland
+    sudo pacman -S wayland hyprland waybar wofi dunst pipewire wireplumber polkit-kde-agent qt5-wayland qt6-wayland
 
     # grim + slurp + swappy for screenshots
     sudo pacman -S grim slurp swappy wl-clipboard
 
-    # wdisplays is a decent looking GUI similar to arandr but for Wayland
-    paru -S wdisplays xwaylandvideobridge-bin
+    # wdisplays is a decent looking GUI similar to arandr but for Wayland, and xdg-desktop-portal-hyprland is useful for screensharing
+    paru -S wdisplays xwaylandvideobridge-bin xdg-desktop-portal-hyprland-git
 }
 
 # AwesomeWM (X11) - not a bad tiling WM
