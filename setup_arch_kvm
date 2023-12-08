@@ -12,4 +12,7 @@ else
     echo "IOMMU not supported"
 fi
 
+echo "Ensuring default network is autostarted"
+sudo virsh net-autostart default
+
 echo "It's probably a good idea to reboot now..."
