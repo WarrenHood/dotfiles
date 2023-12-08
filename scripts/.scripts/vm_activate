@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo "Unloading nvidia_drm"
+sudo modprobe -r nvidia_drm
+
+echo "Setting graphics mode to Vfio"
+supergfxctl -m Vfio
+
+echo "Restarting libvirtd"
+sudo systemctl restart --now libvirtd
