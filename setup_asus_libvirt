@@ -1,6 +1,9 @@
 #!/bin/bash
 # This is a simple script to automate the process described by https://asus-linux.org/wiki/vfio-guide/#chapter-3-creating-our-vm
 
+echo "Ensuring libvirt is enabled"
+sudo systemctl enable --now libvirtd
+
 echo "Setting up libvirt hooks"
 sudo mkdir -p /etc/libvirt/hooks/qemu.d && sudo wget 'https://asus-linux.org/files/vfio/libvirt_hooks/qemu' -O /etc/libvirt/hooks/qemu && sudo chmod +x /etc/libvirt/hooks/qemu
 

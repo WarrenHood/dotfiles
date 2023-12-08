@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Setting up KVM for Arch Linux"
-sudo pacman -S qemu libvirt edk2-ovmf virt-manager ebtables dnsmasq qemu-audio-pa
+sudo pacman -S qemu libvirt edk2-ovmf virt-manager ebtables dnsmasq qemu-audio-pa dmidecode
 
 # Check if IOMMU is supported
 dmesg_iommu_out=$(sudo dmesg | grep -i -e DMAR -e IOMMU)
