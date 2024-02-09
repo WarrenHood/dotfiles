@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# A simple wallpaper setting script
+
+wallpapers_dir=~/.wallpapers
+# wallpaper=miku.jpg
+wallpaper=anime1.jpg
+
+monitors=$(hyprctl monitors | grep Monitor | awk '{print $2}')
+
+# unload all existing wallpapers to free mem
+echo "Unloading all wallpapers: $(hyprctl hyprpaper unload all)"
+echo "Preloading wallpaper '$wallpaper': $(hyprctl hyprpaper preload "$wallpapers_dir/$wallpaper")"
+
+# Set wallpaper on all monitors (doesn't work)
+# result=$(hyprctl hyprpaper wallpaper ", $wallpapers_dir/$wallpaper")
+# echo "Set wallpaper: $result"
+
+# Set wallpaper on each monitor one by one
+for mon in $monitors; do
+    result=$(hyprctl hyprpaper wallpaper "$mon, $wallpapers_dir/$wallpaper")
+    echo "Set wallpaper on monitor $mon: $result"
+done
