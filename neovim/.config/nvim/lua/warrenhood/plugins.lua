@@ -21,7 +21,10 @@ require("packer").startup(function()
     use("wbthomason/packer.nvim")
 
     -- OneDark color scheme
-    use("navarasu/onedark.nvim")
+    -- use("navarasu/onedark.nvim")
+
+    -- base16 color scheme
+    use("RRethy/base16-nvim")
 
     -- LSP Stuff
     use({
