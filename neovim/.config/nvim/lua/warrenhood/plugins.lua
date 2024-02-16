@@ -144,10 +144,10 @@ require("packer").startup(function()
     use { "jay-babu/mason-nvim-dap.nvim" }
 
     -- Tab
-    use {
-        'romgrk/barbar.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons' },
-    }
+    -- use {
+    --     'romgrk/barbar.nvim',
+    --     requires = { 'kyazdani42/nvim-web-devicons' },
+    -- }
 
     use {
         "nvim-neorg/neorg",
@@ -176,6 +176,9 @@ require("packer").startup(function()
             require('mkdnflow').setup({})
         end
     })
+
+    -- Marks
+    use("chentoast/marks.nvim")
 
 
     -- Automatically set up configuration after cloning packer.nvim

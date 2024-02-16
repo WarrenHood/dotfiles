@@ -84,7 +84,7 @@ map("n", "<Leader>di", ":lua require('dapui').toggle()<CR>")
 -- luasnip
 vim.cmd [[
 " Use Tab to expand and jump through snippets
-imap <silent><expr> <C-k> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>' 
+imap <silent><expr> <C-k> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
 smap <silent><expr> <C-k> luasnip#jumpable(1) ? '<Plug>luasnip-jump-next' : '<Tab>'
 
 " Use Shift-Tab to jump backwards through snippets
@@ -101,61 +101,64 @@ if vim.g.neovide then
 end
 
 
--- barbar
-local barbar_opts = { noremap = true, silent = true }
-
--- Move to previous/next
-map('n', '<A-,>', '<Cmd>BufferPrevious<CR>', barbar_opts)
-map('n', '<A-.>', '<Cmd>BufferNext<CR>', barbar_opts)
--- Re-order to previous/next
-map('n', '<A-<>', '<Cmd>BufferMovePrevious<CR>', barbar_opts)
-map('n', '<A->>', '<Cmd>BufferMoveNext<CR>', barbar_opts)
--- Goto buffer in position...
-map('n', '<A-1>', '<Cmd>BufferGoto 1<CR>', barbar_opts)
-map('n', '<A-2>', '<Cmd>BufferGoto 2<CR>', barbar_opts)
-map('n', '<A-3>', '<Cmd>BufferGoto 3<CR>', barbar_opts)
-map('n', '<A-4>', '<Cmd>BufferGoto 4<CR>', barbar_opts)
-map('n', '<A-5>', '<Cmd>BufferGoto 5<CR>', barbar_opts)
-map('n', '<A-6>', '<Cmd>BufferGoto 6<CR>', barbar_opts)
-map('n', '<A-7>', '<Cmd>BufferGoto 7<CR>', barbar_opts)
-map('n', '<A-8>', '<Cmd>BufferGoto 8<CR>', barbar_opts)
-map('n', '<A-9>', '<Cmd>BufferGoto 9<CR>', barbar_opts)
-map('n', '<A-0>', '<Cmd>BufferLast<CR>', barbar_opts)
--- Pin/unpin buffer
-map('n', '<A-p>', '<Cmd>BufferPin<CR>', barbar_opts)
--- Close buffer
-map('n', '<A-c>', '<Cmd>BufferClose<CR>', barbar_opts)
--- Wipeout buffer
---                 :BufferWipeout
-
--- Close commands
---                 :BufferCloseAllButCurrent
---                 :BufferCloseAllButPinned
---                 :BufferCloseAllButCurrentOrPinned
---                 :BufferCloseBuffersLeft
---                 :BufferCloseBuffersRight
--- Magic buffer-picking mode
-map('n', '<C-p>', '<Cmd>BufferPick<CR>', barbar_opts)
--- Sort automatically by...
-map('n', '<Space>bb', '<Cmd>BufferOrderByBufferNumber<CR>', barbar_opts)
-map('n', '<Space>bd', '<Cmd>BufferOrderByDirectory<CR>', barbar_opts)
-map('n', '<Space>bl', '<Cmd>BufferOrderByLanguage<CR>', barbar_opts)
-map('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>', barbar_opts)
-
--- Other:
--- :BarbarEnable - enables barbar (enabled by default)
--- :BarbarDisable - very bad command, should never be used
+-- -- barbar
+-- local barbar_opts = { noremap = true, silent = true }
+--
+-- -- Move to previous/next
+-- map('n', '<A-,>', '<Cmd>BufferPrevious<CR>', barbar_opts)
+-- map('n', '<A-.>', '<Cmd>BufferNext<CR>', barbar_opts)
+-- -- Re-order to previous/next
+-- map('n', '<A-<>', '<Cmd>BufferMovePrevious<CR>', barbar_opts)
+-- map('n', '<A->>', '<Cmd>BufferMoveNext<CR>', barbar_opts)
+-- -- Goto buffer in position...
+-- map('n', '<A-1>', '<Cmd>BufferGoto 1<CR>', barbar_opts)
+-- map('n', '<A-2>', '<Cmd>BufferGoto 2<CR>', barbar_opts)
+-- map('n', '<A-3>', '<Cmd>BufferGoto 3<CR>', barbar_opts)
+-- map('n', '<A-4>', '<Cmd>BufferGoto 4<CR>', barbar_opts)
+-- map('n', '<A-5>', '<Cmd>BufferGoto 5<CR>', barbar_opts)
+-- map('n', '<A-6>', '<Cmd>BufferGoto 6<CR>', barbar_opts)
+-- map('n', '<A-7>', '<Cmd>BufferGoto 7<CR>', barbar_opts)
+-- map('n', '<A-8>', '<Cmd>BufferGoto 8<CR>', barbar_opts)
+-- map('n', '<A-9>', '<Cmd>BufferGoto 9<CR>', barbar_opts)
+-- map('n', '<A-0>', '<Cmd>BufferLast<CR>', barbar_opts)
+-- -- Pin/unpin buffer
+-- map('n', '<A-p>', '<Cmd>BufferPin<CR>', barbar_opts)
+-- -- Close buffer
+-- map('n', '<A-c>', '<Cmd>BufferClose<CR>', barbar_opts)
+-- -- Wipeout buffer
+-- --                 :BufferWipeout
+--
+-- -- Close commands
+-- --                 :BufferCloseAllButCurrent
+-- --                 :BufferCloseAllButPinned
+-- --                 :BufferCloseAllButCurrentOrPinned
+-- --                 :BufferCloseBuffersLeft
+-- --                 :BufferCloseBuffersRight
+-- -- Magic buffer-picking mode
+-- map('n', '<C-p>', '<Cmd>BufferPick<CR>', barbar_opts)
+-- -- Sort automatically by...
+-- map('n', '<Space>bb', '<Cmd>BufferOrderByBufferNumber<CR>', barbar_opts)
+-- map('n', '<Space>bd', '<Cmd>BufferOrderByDirectory<CR>', barbar_opts)
+-- map('n', '<Space>bl', '<Cmd>BufferOrderByLanguage<CR>', barbar_opts)
+-- map('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>', barbar_opts)
+--
+-- -- Other:
+-- -- :BarbarEnable - enables barbar (enabled by default)
+-- -- :BarbarDisable - very bad command, should never be used
 
 
 -- Disable arrow keys
-local arrows = {'<Up>', '<Down>', '<Left>', '<Right>'}
-for i=1,#arrows do
-    map('n', arrows[i], function () end)
-    map('i', arrows[i], function () end)
+local arrows = { '<Up>', '<Down>', '<Left>', '<Right>' }
+for i = 1, #arrows do
+    map('n', arrows[i], function() end)
+    map('i', arrows[i], function() end)
 end
 
 -- Code actions with ctrl + .
-map('n', '<Leader>.', function() vim.lsp.buf.code_action({ apply = true}) end, { desc = 'Code action/Quick fix' })
+map('n', '<Leader>.', function() vim.lsp.buf.code_action({ apply = true }) end, { desc = 'Code action/Quick fix' })
 
 -- Show telescope commands fuzzy finder
 map('n', '<Leader><Leader>', function() require('telescope.builtin').commands() end, { desc = 'Show commands' })
+
+-- Show diagnostics in floating window
+map('n', '<Leader>e', function() vim.diagnostic.open_float() end, { desc = 'Show diagnostics' })
