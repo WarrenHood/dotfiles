@@ -112,7 +112,7 @@ mods = "Alt"
 
 [shell]
 args = ["-l"]
-program = "/bin/zsh"
+program = "zsh"
 
 [window]
 decorations = "none"
