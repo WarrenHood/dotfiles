@@ -20,6 +20,9 @@ require("packer").startup(function()
     -- Packer package manager
     use("wbthomason/packer.nvim")
 
+    -- nvim-nio
+    use("nvim-neotest/nvim-nio")
+
     -- OneDark color scheme
     -- use("navarasu/onedark.nvim")
 
@@ -58,7 +61,6 @@ require("packer").startup(function()
         requires = {
             'nvim-tree/nvim-web-devicons', -- file icons
         },
-        tag = 'nightly'
     }
 
     -- ToggleTerm
