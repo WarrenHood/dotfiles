@@ -172,12 +172,12 @@ require("packer").startup(function()
     }
 
     -- Markdown Stuff
-    use({ 'jakewvincent/mkdnflow.nvim',
-        rocks = 'luautf8', -- Ensures optional luautf8 dependency is installed
-        config = function()
-            require('mkdnflow').setup({})
-        end
-    })
+    -- use({ 'jakewvincent/mkdnflow.nvim',
+    --     rocks = 'luautf8', -- Ensures optional luautf8 dependency is installed
+    --     config = function()
+    --         require('mkdnflow').setup({})
+    --     end
+    -- })
 
     -- Marks
     use("chentoast/marks.nvim")
