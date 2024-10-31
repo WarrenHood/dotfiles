@@ -110,10 +110,12 @@ action = "ToggleFullscreen"
 key = "Return"
 mods = "Alt"
 
-[shell]
+[terminal.shell]
 args = ["-l"]
 program = "zsh"
 
 [window]
 decorations = "none"
 opacity = 0.95
+
+[terminal]
